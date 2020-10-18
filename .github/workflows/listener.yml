@@ -14,7 +14,7 @@ jobs:
   myOtherEvent:
     runs-on: ubuntu-latest
     steps:
-      - uses: mark-hartmann/update-deployment-action@main
+      - uses: mark-hartmann/update-deployment-action@develop
         with:
           image: markhartmann/mstp-service123 
           release: ${{ github.event.client_payload.ref }}
