@@ -11,3 +11,11 @@ jobs:
           ref: ${{ github.event.client_payload.ref }}
       - run: echo ${{ github.event.client_payload.sha }}
       - run: echo hello world
+  myOtherEvent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mark-hartmann/update-deployment-action@main
+        with:
+          image: markhartmann/mstp-service123 
+          release: ${{ github.event.client_payload.ref }}
+          deployment-manifest: src/test 
