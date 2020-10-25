@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: markhartmann/auth:refs/tags/0.0.13
+          image: markhartmann/auth:0.0.13
           env:
             - name: MONGO_URI
               value: mongodb://auth-mongo-service:27017/auth
