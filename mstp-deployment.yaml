@@ -14,13 +14,26 @@ spec:
     spec:
       containers:
         - name: auth
-          image: markhartmann/auth:refs/tags/0.0.14
+          image: markhartmann/auth
           env:
             - name: MONGO_URI
-              value: mongodb://auth-mongo-service:27017/auth
+              value: 'mongodb://auth-mongo-service:27017/auth'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+spec:
+  selector:
+    app: auth
+  type: ClusterIP
+  ports:
+    - name: auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
