@@ -8,6 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           ref: ${{ github.event.client_payload.ref }} 
       - run: echo ${{ github.event.client_payload.sha }}
       - run: echo hello world
