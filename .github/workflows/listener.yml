@@ -6,13 +6,12 @@ jobs:
   myEvent:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ref: ${{ github.event.client_payload.ref }} 
+      - name: Checkout mstp-master
+        uses: actions/checkout@v2
       - run: echo ${{ github.event.client_payload.sha }}
       - run: echo hello world
-      - uses: mark-hartmann/update-deployment-action@develop
+      - name: Apply the new tag to the deployment
+        uses: mark-hartmann/update-deployment-action@develop
         with:
           tag: ${{ github.event.client_payload.ref }}
           name: auth 
