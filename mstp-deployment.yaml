@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: auth
-          image: markhartmann/auth
+          image: markhartmann/auth:0.0.15
           env:
             - name: MONGO_URI
-              value: 'mongodb://auth-mongo-service:27017/auth'
+              value: mongodb://auth-mongo-service:27017/auth
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -37,3 +37,4 @@ spec:
       protocol: TCP
       port: 3000
       targetPort: 3000
+
